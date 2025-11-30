@@ -23,7 +23,8 @@ async def list_spaces(
     service,
     user_google_email: str,
     page_size: int = 100,
-    space_type: str = "all"  # "all", "room", "dm"
+    space_type: str = "all",  # "all", "room", "dm"
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Lists Google Chat spaces (rooms and direct messages) accessible to the user.
@@ -69,7 +70,8 @@ async def get_messages(
     user_google_email: str,
     space_id: str,
     page_size: int = 50,
-    order_by: str = "createTime desc"
+    order_by: str = "createTime desc",
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Retrieves messages from a Google Chat space.
@@ -119,7 +121,8 @@ async def send_message(
     user_google_email: str,
     space_id: str,
     message_text: str,
-    thread_key: Optional[str] = None
+    thread_key: Optional[str] = None,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Sends a message to a Google Chat space.
@@ -160,7 +163,8 @@ async def search_messages(
     user_google_email: str,
     query: str,
     space_id: Optional[str] = None,
-    page_size: int = 25
+    page_size: int = 25,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Searches for messages in Google Chat spaces by text content.

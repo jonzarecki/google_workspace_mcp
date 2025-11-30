@@ -71,7 +71,8 @@ async def list_task_lists(
     service: Resource,
     user_google_email: str,
     max_results: int = 1000,
-    page_token: Optional[str] = None
+    page_token: Optional[str] = None,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     List all task lists for the user.
@@ -130,7 +131,8 @@ async def list_task_lists(
 async def get_task_list(
     service: Resource,
     user_google_email: str,
-    task_list_id: str
+    task_list_id: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Get details of a specific task list.
@@ -174,7 +176,8 @@ async def get_task_list(
 async def create_task_list(
     service: Resource,
     user_google_email: str,
-    title: str
+    title: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Create a new task list.
@@ -223,7 +226,8 @@ async def update_task_list(
     service: Resource,
     user_google_email: str,
     task_list_id: str,
-    title: str
+    title: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Update an existing task list.
@@ -272,7 +276,8 @@ async def update_task_list(
 async def delete_task_list(
     service: Resource,
     user_google_email: str,
-    task_list_id: str
+    task_list_id: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Delete a task list. Note: This will also delete all tasks in the list.
@@ -324,6 +329,7 @@ async def list_tasks(
     due_max: Optional[str] = None,
     due_min: Optional[str] = None,
     updated_min: Optional[str] = None,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     List all tasks in a specific task list.
@@ -553,7 +559,8 @@ async def get_task(
     service: Resource,
     user_google_email: str,
     task_list_id: str,
-    task_id: str
+    task_id: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Get details of a specific task.
@@ -618,7 +625,8 @@ async def create_task(
     notes: Optional[str] = None,
     due: Optional[str] = None,
     parent: Optional[str] = None,
-    previous: Optional[str] = None
+    previous: Optional[str] = None,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Create a new task in a task list.
@@ -693,7 +701,8 @@ async def update_task(
     title: Optional[str] = None,
     notes: Optional[str] = None,
     status: Optional[str] = None,
-    due: Optional[str] = None
+    due: Optional[str] = None,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Update an existing task.
@@ -771,7 +780,8 @@ async def delete_task(
     service: Resource,
     user_google_email: str,
     task_list_id: str,
-    task_id: str
+    task_id: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Delete a task from a task list.
@@ -816,7 +826,8 @@ async def move_task(
     task_id: str,
     parent: Optional[str] = None,
     previous: Optional[str] = None,
-    destination_task_list: Optional[str] = None
+    destination_task_list: Optional[str] = None,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Move a task to a different position or parent within the same list, or to a different list.
@@ -891,7 +902,8 @@ async def move_task(
 async def clear_completed_tasks(
     service: Resource,
     user_google_email: str,
-    task_list_id: str
+    task_list_id: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Clear all completed tasks from a task list. The tasks will be marked as hidden.

@@ -26,6 +26,7 @@ async def list_spreadsheets(
     service,
     user_google_email: str,
     max_results: int = 25,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Lists spreadsheets from Google Drive that the user has access to.
@@ -77,6 +78,7 @@ async def get_spreadsheet_info(
     service,
     user_google_email: str,
     spreadsheet_id: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Gets information about a specific spreadsheet including its sheets.
@@ -128,6 +130,7 @@ async def read_sheet_values(
     user_google_email: str,
     spreadsheet_id: str,
     range_name: str = "A1:Z1000",
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Reads values from a specific range in a Google Sheet.
@@ -181,6 +184,7 @@ async def modify_sheet_values(
     values: Optional[Union[str, List[List[str]]]] = None,
     value_input_option: str = "USER_ENTERED",
     clear_values: bool = False,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Modifies values in a specific range of a Google Sheet - can write, update, or clear values.
@@ -266,6 +270,7 @@ async def create_spreadsheet(
     user_google_email: str,
     title: str,
     sheet_names: Optional[List[str]] = None,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Creates a new Google Spreadsheet.
@@ -315,6 +320,7 @@ async def create_sheet(
     user_google_email: str,
     spreadsheet_id: str,
     sheet_name: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Creates a new sheet within an existing spreadsheet.

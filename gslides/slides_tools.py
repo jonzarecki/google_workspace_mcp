@@ -6,7 +6,7 @@ This module provides MCP tools for interacting with Google Slides API.
 
 import logging
 import asyncio
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 
 
 from auth.service_decorator import require_google_service
@@ -23,7 +23,8 @@ logger = logging.getLogger(__name__)
 async def create_presentation(
     service,
     user_google_email: str,
-    title: str = "Untitled Presentation"
+    title: str = "Untitled Presentation",
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Create a new Google Slides presentation.
@@ -64,7 +65,8 @@ async def create_presentation(
 async def get_presentation(
     service,
     user_google_email: str,
-    presentation_id: str
+    presentation_id: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Get details about a Google Slides presentation.
@@ -113,7 +115,8 @@ async def batch_update_presentation(
     service,
     user_google_email: str,
     presentation_id: str,
-    requests: List[Dict[str, Any]]
+    requests: List[Dict[str, Any]],
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Apply batch updates to a Google Slides presentation.
@@ -170,7 +173,8 @@ async def get_page(
     service,
     user_google_email: str,
     presentation_id: str,
-    page_object_id: str
+    page_object_id: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Get details about a specific page (slide) in a presentation.
@@ -233,7 +237,8 @@ async def get_page_thumbnail(
     user_google_email: str,
     presentation_id: str,
     page_object_id: str,
-    thumbnail_size: str = "MEDIUM"
+    thumbnail_size: str = "MEDIUM",
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Generate a thumbnail URL for a specific page (slide) in a presentation.

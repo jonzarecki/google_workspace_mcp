@@ -32,7 +32,8 @@ async def search_custom(
     date_restrict: Optional[str] = None,
     file_type: Optional[str] = None,
     language: Optional[str] = None,
-    country: Optional[str] = None
+    country: Optional[str] = None,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Performs a search using Google Custom Search JSON API.
@@ -152,7 +153,8 @@ async def search_custom(
 @require_google_service("customsearch", "customsearch")
 async def get_search_engine_info(
     service,
-    user_google_email: str
+    user_google_email: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Retrieves metadata about a Programmable Search Engine.
@@ -225,7 +227,8 @@ async def search_custom_siterestrict(
     sites: List[str],
     num: int = 10,
     start: int = 1,
-    safe: Literal["active", "moderate", "off"] = "off"
+    safe: Literal["active", "moderate", "off"] = "off",
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Performs a search restricted to specific sites using Google Custom Search.
