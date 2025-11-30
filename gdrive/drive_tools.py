@@ -43,6 +43,7 @@ async def search_drive_files(
     drive_id: Optional[str] = None,
     include_items_from_all_drives: bool = True,
     corpora: Optional[str] = None,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Searches for files and folders within a user's Google Drive, including shared drives.
@@ -106,6 +107,7 @@ async def get_drive_file_content(
     service,
     user_google_email: str,
     file_id: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Retrieves the content of a specific Google Drive file by ID, supporting files in shared drives.
@@ -201,6 +203,7 @@ async def list_drive_items(
     drive_id: Optional[str] = None,
     include_items_from_all_drives: bool = True,
     corpora: Optional[str] = None,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Lists files and folders, supporting shared drives.
@@ -258,6 +261,7 @@ async def create_drive_file(
     folder_id: str = 'root',
     mime_type: str = 'text/plain',
     fileUrl: Optional[str] = None,  # Now explicitly Optional
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Creates a new file in Google Drive, supporting creation within shared drives.
@@ -445,6 +449,7 @@ async def get_drive_file_permissions(
     service,
     user_google_email: str,
     file_id: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Gets detailed metadata about a Google Drive file including sharing permissions.
@@ -556,6 +561,7 @@ async def check_drive_file_public_access(
     service,
     user_google_email: str,
     file_name: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Searches for a file by name and checks if it has public link sharing enabled.
@@ -664,6 +670,7 @@ async def update_drive_file(
 
     # Custom properties
     properties: Optional[dict] = None,  # User-visible custom properties
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Updates metadata and properties of a Google Drive file.

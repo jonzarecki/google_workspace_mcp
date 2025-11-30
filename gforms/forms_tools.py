@@ -24,7 +24,8 @@ async def create_form(
     user_google_email: str,
     title: str,
     description: Optional[str] = None,
-    document_title: Optional[str] = None
+    document_title: Optional[str] = None,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Create a new form using the title given in the provided form message in the request.
@@ -71,7 +72,8 @@ async def create_form(
 async def get_form(
     service,
     user_google_email: str,
-    form_id: str
+    form_id: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Get a form.
@@ -129,7 +131,8 @@ async def set_publish_settings(
     user_google_email: str,
     form_id: str,
     publish_as_template: bool = False,
-    require_authentication: bool = False
+    require_authentication: bool = False,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Updates the publish settings of a form.
@@ -166,7 +169,8 @@ async def get_form_response(
     service,
     user_google_email: str,
     form_id: str,
-    response_id: str
+    response_id: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Get one response from the form.
@@ -221,7 +225,8 @@ async def list_form_responses(
     user_google_email: str,
     form_id: str,
     page_size: int = 10,
-    page_token: Optional[str] = None
+    page_token: Optional[str] = None,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     List a form's responses.

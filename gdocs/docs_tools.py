@@ -6,7 +6,7 @@ This module provides MCP tools for interacting with Google Docs API and managing
 import logging
 import asyncio
 import io
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 
 from googleapiclient.http import MediaIoBaseDownload, MediaIoBaseUpload
 
@@ -56,6 +56,7 @@ async def search_docs(
     user_google_email: str,
     query: str,
     page_size: int = 10,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Searches for Google Docs by name using Drive API (mimeType filter).
@@ -98,6 +99,7 @@ async def get_doc_content(
     docs_service: Any,
     user_google_email: str,
     document_id: str,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Retrieves content of a Google Doc or a Drive file (like .docx) identified by document_id.
@@ -254,7 +256,8 @@ async def list_docs_in_folder(
     service: Any,
     user_google_email: str,
     folder_id: str = 'root',
-    page_size: int = 100
+    page_size: int = 100,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Lists Google Docs within a specific Drive folder.
@@ -289,6 +292,7 @@ async def create_doc(
     user_google_email: str,
     title: str,
     content: str = '',
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Creates a new Google Doc and optionally inserts initial content.
@@ -324,6 +328,7 @@ async def modify_doc_text(
     underline: bool = None,
     font_size: int = None,
     font_family: str = None,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Modifies text in a Google Doc - can insert/replace text and/or apply formatting in a single operation.
@@ -457,6 +462,7 @@ async def find_and_replace_doc(
     find_text: str,
     replace_text: str,
     match_case: bool = False,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Finds and replaces text throughout a Google Doc.
@@ -506,6 +512,7 @@ async def insert_doc_elements(
     columns: int = None,
     list_type: str = None,
     text: str = None,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Inserts structural elements like tables, lists, or page breaks into a Google Doc.
@@ -586,6 +593,7 @@ async def insert_doc_image(
     index: int,
     width: int = 0,
     height: int = 0,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Inserts an image into a Google Doc from Drive or a URL.
@@ -661,6 +669,7 @@ async def update_doc_headers_footers(
     section_type: str,
     content: str,
     header_footer_type: str = "DEFAULT",
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Updates headers or footers in a Google Doc.
@@ -713,6 +722,7 @@ async def batch_update_doc(
     user_google_email: str,
     document_id: str,
     operations: List[Dict[str, Any]],
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Executes multiple document operations in a single atomic batch update.
@@ -769,6 +779,7 @@ async def inspect_doc_structure(
     user_google_email: str,
     document_id: str,
     detailed: bool = False,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Essential tool for finding safe insertion points and understanding document structure.
@@ -887,6 +898,7 @@ async def create_table_with_data(
     table_data: List[List[str]],
     index: int,
     bold_headers: bool = True,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Creates a table and populates it with data in one reliable operation.
@@ -979,6 +991,7 @@ async def debug_table_structure(
     user_google_email: str,
     document_id: str,
     table_index: int = 0,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     ESSENTIAL DEBUGGING TOOL - Use this whenever tables don't work as expected.
@@ -1066,6 +1079,7 @@ async def export_doc_to_pdf(
     document_id: str,
     pdf_filename: str = None,
     folder_id: str = None,
+    toolCallId: Optional[str] = None
 ) -> str:
     """
     Exports a Google Doc to PDF format and saves it to Google Drive.
